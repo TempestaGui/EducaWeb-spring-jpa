@@ -1,4 +1,4 @@
-package org.educandoweb.educaweb.entities;
+package org.educandoweb.educaweb.entity;
 
 
 import java.io.Serial;
