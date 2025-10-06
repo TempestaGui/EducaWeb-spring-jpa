@@ -1,13 +1,11 @@
 package org.educandoweb.educaweb.entity;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.Table;
-import jakarta.persistence.Id;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
+import jakarta.persistence.*;
 
 import java.io.Serial;
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Objects;
 
 @Entity
@@ -24,6 +22,9 @@ public class User implements Serializable {
     private String email;
     private String phone;
     private String passWord;
+
+    @OneToMany(mappedBy = "client")
+    private List<Order> orders = new ArrayList<>();
 
     public User() {}
 
@@ -74,6 +75,11 @@ public class User implements Serializable {
     public void setPassWord(String passWord) {
         this.passWord = passWord;
     }
+
+    public List<Order> getOrders() {
+        return orders;
+    }
+
 
     @Override
     public boolean equals(Object o) {
