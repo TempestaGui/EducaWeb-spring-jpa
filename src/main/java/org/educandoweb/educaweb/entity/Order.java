@@ -26,6 +26,7 @@ public class Order implements Serializable {
     public Order(Long id, User client, Instant moment){
         this.id = id;
         this.client = client;
+        this.moment = moment;
     }
 
 
@@ -44,6 +45,14 @@ public class Order implements Serializable {
 
     public Long getId() {
         return id;
+    }
+
+    public Instant getMoment() {
+        return moment;
+    }
+
+    public void setMoment(Instant moment) {
+        this.moment = moment;
     }
 
     @Override
