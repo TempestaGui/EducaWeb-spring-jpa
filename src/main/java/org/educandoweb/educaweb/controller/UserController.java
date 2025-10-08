@@ -14,7 +14,7 @@ import org.educandoweb.educaweb.entity.User;
 import java.util.List;
 
 @RestController
-@RequestMapping(value = "/Users")
+@RequestMapping(value = "/users")
 public class UserController {
 
     @Autowired
