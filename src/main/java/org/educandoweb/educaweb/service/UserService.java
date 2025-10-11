@@ -18,6 +18,10 @@ public class UserService {
     }
 
     public User findById(Long id){
-        return userRepository.findById(id).orElse(null);
+        User result = userRepository.findById(id).orElse(null);
+        if(result == null){
+            throw new IllegalArgumentException("User not found");
+        }
+        return result;
     }
 }
