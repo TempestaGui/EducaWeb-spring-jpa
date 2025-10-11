@@ -2,10 +2,7 @@ package org.educandoweb.educaweb.config;
 
 import org.educandoweb.educaweb.entity.*;
 import org.educandoweb.educaweb.enums.OrderStatusEnum;
-import org.educandoweb.educaweb.repository.CategoryRepository;
-import org.educandoweb.educaweb.repository.OrderRepository;
-import org.educandoweb.educaweb.repository.ProductRepository;
-import org.educandoweb.educaweb.repository.UserRepository;
+import org.educandoweb.educaweb.repository.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.context.annotation.Configuration;
@@ -29,6 +26,9 @@ public class TestConfig implements CommandLineRunner {
 
     @Autowired
     private ProductRepository pr;
+
+    @Autowired
+    private OrderItemRepository oir;
 
 
     @Override
@@ -61,6 +61,7 @@ public class TestConfig implements CommandLineRunner {
         ur.saveAll(Arrays.asList(u1, u2));
         or.saveAll(Arrays.asList(o1,o2,o3));
         cr.saveAll(Arrays.asList(c1,c2,c3));
+        oir.saveAll(Arrays.asList(oi1,oi2,oi3,oi4));
 
         p1.getCategories().add(c2); //produto 1 associado a categoria 2
         p2.getCategories().add(c1);

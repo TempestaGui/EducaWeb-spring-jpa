@@ -1,10 +1,9 @@
 package org.educandoweb.educaweb.repository;
 
-
-import org.educandoweb.educaweb.entity.Order;
+import org.educandoweb.educaweb.entity.OrderItem;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
 @Repository
-public interface OrderRepository extends JpaRepository<Order, Long> {
+public interface OrderItemRepository extends JpaRepository<OrderItem, Long> {
 }
