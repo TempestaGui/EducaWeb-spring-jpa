@@ -31,12 +31,18 @@ public class UserController {
         return ResponseEntity.ok().body(userService.findById(id));
     }
 
-    @PostMapping("/insert")
+    @PostMapping()
     public ResponseEntity<User> insert(@RequestBody User user){
        user =  userService.Insert(user);
        URI uri = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id") //para que retorne 201 create
                .buildAndExpand(user.getId()).toUri();
        return ResponseEntity.created(uri).body(user);
+    }
+
+    @DeleteMapping("/{id}")
+    public ResponseEntity<Void> delete(@PathVariable Long id){
+        userService.delete(id);
+        return ResponseEntity.noContent().build();
     }
 
 }
