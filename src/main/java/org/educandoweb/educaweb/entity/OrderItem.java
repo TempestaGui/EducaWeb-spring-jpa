@@ -1,7 +1,6 @@
 package org.educandoweb.educaweb.entity;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import jakarta.persistence.Embeddable;
 import jakarta.persistence.EmbeddedId;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Table;
@@ -62,6 +61,10 @@ public class OrderItem implements Serializable {
 
     public void setPrice(double price) {
         this.price = price;
+    }
+
+    public double getSubTotal(){
+        return price * quantity;
     }
 
     @Override
