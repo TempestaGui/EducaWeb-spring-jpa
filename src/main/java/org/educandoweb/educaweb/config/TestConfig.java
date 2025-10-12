@@ -72,5 +72,9 @@ public class TestConfig implements CommandLineRunner {
 
         pr.saveAll(Arrays.asList(p1,p2,p3,p4,p5));
 
+        Payments pay1 = new Payments(null, Instant.parse("2019-06-20T21:53:07Z"), o1);
+        o1.setPayments(pay1);
+
+        or.save(o1);
     }
 }

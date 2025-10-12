@@ -3,6 +3,7 @@ package org.educandoweb.educaweb.entity;
 import com.fasterxml.jackson.annotation.JsonFormat;
 import jakarta.persistence.*;
 import org.educandoweb.educaweb.enums.OrderStatusEnum;
+import org.hibernate.engine.internal.Cascade;
 
 import java.io.Serializable;
 import java.time.Instant;
@@ -30,6 +31,9 @@ public class Order implements Serializable {
 
     @OneToMany(mappedBy = "id.order")
     private Set<OrderItem> items = new HashSet<>();
+
+    @OneToOne(mappedBy = "order", cascade = CascadeType.ALL) //mapenado para ter o mesmo id, se o pedido for id 5 o pagamento tmb vai ser 5
+    private Payments payments;
 
     public Order(){}
 
@@ -73,6 +77,14 @@ public class Order implements Serializable {
         if(orderStatus != null){
             this.orderStatus = orderStatus.getCode();
         }
+    }
+
+    public Payments getPayments() {
+        return payments;
+    }
+
+    public void setPayments(Payments payments) {
+        this.payments = payments;
     }
 
     public Set<OrderItem> getItem(){
