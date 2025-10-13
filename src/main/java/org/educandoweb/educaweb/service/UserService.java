@@ -1,5 +1,6 @@
 package org.educandoweb.educaweb.service;
 
+import jakarta.persistence.EntityNotFoundException;
 import org.educandoweb.educaweb.entity.User;
 import org.educandoweb.educaweb.repository.UserRepository;
 import org.educandoweb.educaweb.service.exception.DataBaseException;
@@ -45,9 +46,13 @@ public class UserService {
     }
 
     public User update(Long id, User userNovo){
-        User entity = userRepository.getReferenceById(id);
-        updateData(entity, userNovo);
-        return userRepository.save(entity);
+        try{
+            User entity = userRepository.getReferenceById(id);
+            updateData(entity, userNovo);
+            return userRepository.save(entity);
+        }catch (EntityNotFoundException e){
+            throw new ResourceNotFoundException(id);
+        }
     }
 
     private void updateData(User entity, User userNovo){
